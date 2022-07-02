@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "786304596574",
+    "project_id": "guhtix-d432b",
+    "storage_bucket": "guhtix-d432b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786304596574:android:f6dbbf5a77dc5bf2b612cf",
+        "android_client_info": {
+          "package_name": "com.teguh.guhtix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786304596574-tfrjaokjmbu8i5b5v4tksij1mc26qcie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoLC-ObFzoqg6jXVviuSZL3PdkuNfZW2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786304596574-tfrjaokjmbu8i5b5v4tksij1mc26qcie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
