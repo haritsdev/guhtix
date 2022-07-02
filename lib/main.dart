@@ -37,10 +37,31 @@ class _MyAppState extends State<MyApp> {
                     if (result.user == null) {
                       print(result.message);
                     } else {
+                      print("===========");
+                      print("========Berhasil");
+                      print(result.user.toString());
+                      print("========Berhasil");
+                    }
+                  },
+                  child: Text("Sign Up")),
+              ElevatedButton(
+                  onPressed: () async {
+                    SignInSignUpResult result = await AuthServices.signIn(
+                      "intan@gmail.com1",
+                      "123456",
+                    );
+                    if (result.user == null) {
+                      print('GAGAL');
+                      print(result);
+                      print("==================");
+                      print(result.message);
+                    } else {
+                      print('OKE');
+
                       print(result.user.toString());
                     }
                   },
-                  child: Text("Sign Up"))
+                  child: Text("Sign In"))
             ],
           ),
         ),
