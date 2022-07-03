@@ -15,11 +15,17 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Container(
           child: ElevatedButton(
             child: Text("Sign in"),
-            onPressed: () {
+            onPressed: () async {
               // context
               //     .read<AuthCubit>()
               //     .signIn(email: "intan@gmail.com", password: "123456");
-              AuthServices.signIn("intan@gmail.com", "123456");
+              SignInSignUpResult result =
+                  await AuthServices.signIn("intan@gmail.com", "123456");
+              if (result.user != null) {
+                print("Berhasil");
+              } else {
+                print("GAGAL");
+              }
             },
           ),
           //SIGN IN BUTTON

@@ -31,17 +31,18 @@ class AuthServices {
     }
   }
 
-  static Future<UserModel> signIn(String email, String password) async {
+  static Future<SignInSignUpResult> signIn(
+      String email, String password) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       UserModel user = await UserServices.getUser(userCredential.user!.uid);
 
-      // return SignInSignUpResult(user: user);
-      return user;
+      return SignInSignUpResult(user: user);
+      // return user;
     } catch (e) {
-      throw e;
-      // return SignInSignUpResult(message: e.toString().split(']')[1]);
+      // throw e;
+      return SignInSignUpResult(message: e.toString().split(']')[1]);
     }
   }
 
