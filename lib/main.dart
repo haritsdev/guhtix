@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:guhtix/services/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:guhtix/bloc/blocs.dart';
+import 'package:guhtix/ui/screens/screens.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,54 +20,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                  onPressed: () async {
-                    SignInSignUpResult result = await AuthServices.signUp(
-                        "intan@gmail.com",
-                        "123456",
-                        "Intan Anisa",
-                        "user",
-                        ["Action", "Horror"],
-                        "Bahasa");
-                    if (result.user == null) {
-                      print(result.message);
-                    } else {
-                      print("===========");
-                      print("========Berhasil");
-                      print(result.user.toString());
-                      print("========Berhasil");
-                    }
-                  },
-                  child: Text("Sign Up")),
-              ElevatedButton(
-                  onPressed: () async {
-                    SignInSignUpResult result = await AuthServices.signIn(
-                      "intan@gmail.com1",
-                      "123456",
-                    );
-                    if (result.user == null) {
-                      print('GAGAL');
-                      print(result);
-                      print("==================");
-                      print(result.message);
-                    } else {
-                      print('OKE');
-
-                      print(result.user.toString());
-                    }
-                  },
-                  child: Text("Sign In"))
-            ],
-          ),
-        ),
-      ),
-    );
+    return MultiBlocProvider(
+        providers: [BlocProvider(create: (_) => PageBloc(OnInitialPage()))],
+        child: MaterialApp(debugShowCheckedModeBanner: false, home: Wrapper()));
   }
 }

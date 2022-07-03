@@ -31,22 +31,25 @@ class AuthServices {
     }
   }
 
-  static Future<SignInSignUpResult> signIn(
-      String email, String password) async {
+  static Future<UserModel> signIn(String email, String password) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       UserModel user = await UserServices.getUser(userCredential.user!.uid);
 
-      return SignInSignUpResult(user: user);
+      // return SignInSignUpResult(user: user);
+      return user;
     } catch (e) {
-      return SignInSignUpResult(message: e.toString().split(']')[1]);
+      throw e;
+      // return SignInSignUpResult(message: e.toString().split(']')[1]);
     }
   }
 
   static Future<void> signOut() async {
     await _auth.signOut();
   }
+
+  static Stream<User?> get userStream => _auth.authStateChanges();
 }
 
 class SignInSignUpResult {
