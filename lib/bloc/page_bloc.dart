@@ -5,7 +5,7 @@ part 'page_event.dart';
 part 'page_state.dart';
 
 class PageBloc extends Bloc<PageEvent, PageState> {
-  PageBloc(PageState initialState) : super(initialState);
+  PageBloc(OnInitialPage initialState) : super(initialState);
 
   // @override
   // PageState get initialState => OnInitialPage();
