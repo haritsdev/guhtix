@@ -7,6 +7,7 @@ import 'package:guhtix/services/services.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:guhtix/shared/shared.dart';
+import 'package:guhtix/ui/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 part 'splash_screen.dart';

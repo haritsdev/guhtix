@@ -28,7 +28,12 @@ class MyApp extends StatelessWidget {
       value: AuthServices.userStream,
       initialData: null,
       child: MultiBlocProvider(
-        providers: [BlocProvider(create: (_) => PageBloc(OnInitialPage()))],
+        providers: [
+          BlocProvider(create: (_) => PageBloc(OnInitialPage())),
+          BlocProvider(
+            create: (_) => UserBloc(),
+          )
+        ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: Wrapper(),
