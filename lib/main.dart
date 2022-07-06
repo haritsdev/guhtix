@@ -32,11 +32,20 @@ class MyApp extends StatelessWidget {
           BlocProvider(create: (_) => PageBloc(OnInitialPage())),
           BlocProvider(
             create: (_) => UserBloc(),
-          )
+          ),
+          BlocProvider(
+            create: (_) => ThemeBloc(ThemeState(ThemeData())),
+          ),
+          BlocProvider(create: (_) => MovieBloc()..add(FetchMovies()))
         ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: Wrapper(),
+        child: BlocBuilder<ThemeBloc, ThemeState>(
+          builder: (context, themeState) {
+            return MaterialApp(
+              theme: themeState.themeData,
+              debugShowCheckedModeBanner: false,
+              home: Wrapper(),
+            );
+          },
         ),
       ),
     );

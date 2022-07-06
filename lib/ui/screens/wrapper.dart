@@ -26,6 +26,14 @@ class Wrapper extends StatelessWidget {
             ? SplashScreen()
             : (pageState is OnLoginPage)
                 ? SignInScreen()
-                : MainScreen());
+                : (pageState is OnRegistrationPage)
+                    ? SignUpScreen(registrationData: pageState.registrationData)
+                    : (pageState is OnPreferencePage)
+                        ? PreferenceScreens(
+                            registrationData: pageState.registrationData)
+                        : (pageState is OnAccountConfirmationPage)
+                            ? AccountConfirmationScreen(
+                                registrationData: pageState.registrationData)
+                            : MainScreen());
   }
 }

@@ -36,7 +36,11 @@ class SplashScreen extends StatelessWidget {
               margin: EdgeInsets.only(top: 70, bottom: 25),
               child: CustomButton(
                 title: 'Get Started',
-                onPressed: () {},
+                onPressed: () {
+                  context
+                      .read<PageBloc>()
+                      .add(GoToRegistrationPage(RegistrationData()));
+                },
                 fontSize: 16,
                 width: 250,
                 height: 46,
