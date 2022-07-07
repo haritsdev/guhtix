@@ -36,6 +36,9 @@ class Wrapper extends StatelessWidget {
                                 registrationData: pageState.registrationData)
                             : (pageState is OnMovieDetailPage)
                                 ? MovieDetailScreens(pageState.movie)
-                                : MainScreen());
+                                : (pageState is OnSelectScheduleScreen)
+                                    ? SelectScheduleScreens(
+                                        movieDetail: pageState.movieDetail)
+                                    : MainScreen());
   }
 }

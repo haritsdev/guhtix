@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guhtix/model/models.dart';
 import 'package:guhtix/shared/shared.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:guhtix/extensions/extensions.dart';
 
 part 'custom_button.dart';
 part 'selectable_box.dart';
@@ -11,3 +12,4 @@ part 'browse_button.dart';
 part 'cooming_soon_card.dart';
 part 'promo_card.dart';
 part 'credit_card.dart';
+part 'date_card.dart';

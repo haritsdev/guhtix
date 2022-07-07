@@ -31,9 +31,6 @@ class MovieDetailScreens extends StatelessWidget {
                       MovieServices.getDetails(movie, client: http.Client()),
                   builder: (_, snapshot) {
                     if (snapshot.hasData) {
-                      print("\n\nCOBA DULU ======\n\n");
-                      print(snapshot.data);
-                      print("HASIL\n\n");
                       movieDetail = snapshot.data;
                     } else {
                       print("\n\n============ 1233333 COBA======\n\n");
@@ -110,15 +107,14 @@ class MovieDetailScreens extends StatelessWidget {
                                 style: greyTextFont.copyWith(
                                     fontSize: 12, fontWeight: FontWeight.w400),
                               )
-                            :
-                            // SizedBox(
-                            //     height: 50,
-                            //     width: 50,
-                            //     child: SpinKitFadingCircle(
-                            //       color: accentColor3,
-                            //     ),
-                            //   ),
-                            Text('dssdfsdfsdf'),
+                            : SizedBox(
+                                height: 50,
+                                width: 50,
+                                child: SpinKitFadingCircle(
+                                  color: accentColor3,
+                                ),
+                              ),
+
                         SizedBox(
                           height: 6,
                         ),
@@ -205,9 +201,9 @@ class MovieDetailScreens extends StatelessWidget {
                               style: whiteTextFont.copyWith(fontSize: 16),
                             ),
                             onPressed: () {
-                              // context
-                              //     .bloc<PageBloc>()
-                              //     .add(GoToSelectSchedulePage(movieDetail));
+                              context.read<PageBloc>().add(
+                                  GoToSelectScheduleScreen(
+                                      movieDetail: movieDetail!));
                             }),
                         SizedBox(height: defaultMargin)
                       ],

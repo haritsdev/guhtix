@@ -31,3 +31,4 @@ part 'sign_up_screens.dart';
 part 'account_confirmation_screen.dart';
 part 'preference_screens.dart';
 part 'movie_detail_screens.dart';
+part 'select_schedule_screens.dart';
