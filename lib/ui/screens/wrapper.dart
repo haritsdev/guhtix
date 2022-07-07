@@ -34,6 +34,8 @@ class Wrapper extends StatelessWidget {
                         : (pageState is OnAccountConfirmationPage)
                             ? AccountConfirmationScreen(
                                 registrationData: pageState.registrationData)
-                            : MainScreen());
+                            : (pageState is OnMovieDetailPage)
+                                ? MovieDetailScreens(pageState.movie)
+                                : MainScreen());
   }
 }

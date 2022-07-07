@@ -98,7 +98,7 @@ class MoviePage extends StatelessWidget {
           ),
         ),
 
-        //NOW PLAYING
+        //*NOW PLAYING
         Container(
           margin: EdgeInsets.fromLTRB(defaultMargin, 30, defaultMargin, 12),
           child: Text(
@@ -123,7 +123,13 @@ class MoviePage extends StatelessWidget {
                                 ? defaultMargin
                                 : 16),
                         // child: Text(movies[index].voteAverage.toString())
-                        child: MovieCard(movie: movies[index], onTap: () {}),
+                        child: MovieCard(
+                            movie: movies[index],
+                            onTap: () {
+                              print('\n\nMOVIE ID : $movies[index]\n\n');
+                              context.read<PageBloc>().add(
+                                  GoToMovieDetailPage(movie: movies[index]));
+                            }),
                       ));
             } else {
               return SpinKitFadingCircle(
@@ -132,6 +138,92 @@ class MoviePage extends StatelessWidget {
               );
             }
           }),
+        ),
+
+        //*BROWSE MOVIE
+        Text(
+          'Browse Movie',
+          style:
+              blackTextFont.copyWith(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        BlocBuilder<UserBloc, UserState>(builder: (_, userState) {
+          if (userState is UserLoaded) {
+            return Container(
+                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: List.generate(
+                    userState.user.selectedGenres.length,
+                    (index) => BrowseButton(
+                      genre: userState.user.selectedGenres[index],
+                    ),
+                  ),
+                ));
+          } else {
+            return SpinKitFadingCircle(
+              color: mainColor,
+              size: 50,
+            );
+          }
+        }),
+
+        //* COMING SOON
+        Container(
+          margin: EdgeInsets.fromLTRB(defaultMargin, 30, defaultMargin, 12),
+          child: Text(
+            "Cooming Soon",
+            style: blackTextFont.copyWith(
+                fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+        ),
+        SizedBox(
+          height: 140,
+          child: BlocBuilder<MovieBloc, MovieState>(builder: (_, movieState) {
+            if (movieState is MovieLoaded) {
+              List<Movie> movies = movieState.movies.sublist(10);
+
+              return ListView.builder(
+                  itemCount: movies.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (_, index) => Container(
+                        margin: EdgeInsets.only(
+                            left: (index == 0) ? defaultMargin : 0,
+                            right: (index == movies.length - 1)
+                                ? defaultMargin
+                                : 16),
+                        // child: Text(movies[index].voteAverage.toString())
+                        child:
+                            CoomingSoonCard(movie: movies[index], onTap: () {}),
+                      ));
+            } else {
+              return SpinKitFadingCircle(
+                color: mainColor,
+                size: 50,
+              );
+            }
+          }),
+        ),
+
+        //* PROMO CARD
+        Container(
+          margin: EdgeInsets.fromLTRB(defaultMargin, 30, defaultMargin, 12),
+          child: Text(
+            "Get Lucky Day",
+            style: blackTextFont.copyWith(
+                fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+        ),
+        Column(
+          children: dummyPromos
+              .map((e) => Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                        defaultMargin, 0, defaultMargin, 16),
+                    child: PromoCard(e),
+                  ))
+              .toList(),
+        ),
+        SizedBox(
+          height: 100,
         )
       ],
     );

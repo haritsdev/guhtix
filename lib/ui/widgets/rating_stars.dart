@@ -4,11 +4,15 @@ class RatingStars extends StatelessWidget {
   final double voteAverage;
   final double starSize;
   final double fontSize;
+  final Color color;
+  final MainAxisAlignment alignment;
   const RatingStars(
       {Key? key,
+      this.color = Colors.amber,
       required this.voteAverage,
       required this.starSize,
-      this.fontSize = 14});
+      this.fontSize = 14,
+      this.alignment = MainAxisAlignment.start});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +35,7 @@ class RatingStars extends StatelessWidget {
           fontWeight: FontWeight.w500, fontSize: fontSize),
     ));
     return Row(
+      mainAxisAlignment: alignment,
       children: widgets,
     );
   }
