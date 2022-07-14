@@ -21,16 +21,13 @@ class UserModel extends Equatable {
       this.balance = 0});
 
   UserModel copyWith(
-          {required String name,
-          required String profilePicture,
-          required int balance}) =>
+          {String? name, String? profilePicture, required int balance}) =>
       UserModel(
           id: this.id,
           email: this.email,
           roles: roles,
-          name: name != "" ? name : this.name,
-          profilePicture:
-              profilePicture != "" ? profilePicture : this.profilePicture,
+          name: this.name,
+          profilePicture: this.profilePicture,
           balance: balance,
           selectedGenres: selectedGenres,
           selectedLanguage: selectedLanguage);

@@ -63,3 +63,31 @@ class GoToSelectScheduleScreen extends PageEvent {
   @override
   List<Object> get props => [movieDetail];
 }
+
+class GoToSelectSeatScreen extends PageEvent {
+  final Ticket ticket;
+
+  GoToSelectSeatScreen({required this.ticket});
+
+  @override
+  List<Object> get props => [ticket];
+}
+
+class GoToCheckoutScreen extends PageEvent {
+  final Ticket ticket;
+
+  GoToCheckoutScreen({required this.ticket});
+
+  @override
+  List<Object> get props => [ticket];
+}
+
+class GoToSuccessScreen extends PageEvent {
+  final Ticket ticket;
+  final FlutixTransaction transaction;
+
+  GoToSuccessScreen({required this.ticket, required this.transaction});
+
+  @override
+  List<Object> get props => [ticket, transaction];
+}

@@ -9,3 +9,5 @@ part 'promo.dart';
 part 'movie_detail.dart';
 part 'credit.dart';
 part 'theatre.dart';
+part 'ticket.dart';
+part 'flutix_transaction.dart';

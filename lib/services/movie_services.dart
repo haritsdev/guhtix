@@ -19,11 +19,11 @@ class MovieServices {
   }
 
   static Future<MovieDetail> getDetails(Movie movie,
-      {int? movieID, required http.Client client}) async {
+      {int? movieID, http.Client? client}) async {
     Uri url = Uri.parse(
         "https://api.themoviedb.org/3/movie/${movie.id}?api_key=$apiKey&language=en-US");
- client ??= http.Client();
-    var response = await client.get(url);
+
+    var response = await client!.get(url);
     var data = json.decode(response.body);
 
     List genres = (data as Map<String, dynamic>)['genres'];

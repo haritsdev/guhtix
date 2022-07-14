@@ -13,3 +13,4 @@ part 'cooming_soon_card.dart';
 part 'promo_card.dart';
 part 'credit_card.dart';
 part 'date_card.dart';
+part 'coming_soon_card.dart';

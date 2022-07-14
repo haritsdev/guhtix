@@ -103,11 +103,32 @@ class _SelectScheduleScreensState extends State<SelectScheduleScreens> {
               ),
               Align(
                 alignment: Alignment.topCenter,
-                child: FloatingActionButton(
-                  elevation: 0,
-                  onPressed: () {},
-                  child: Icon(Icons.arrow_forward,
-                      color: isValid ? Colors.white : Color(0xFFBEBEBE)),
+                child: BlocBuilder<UserBloc, UserState>(
+                  builder: (context, userState) {
+                    return FloatingActionButton(
+                      elevation: 0,
+                      onPressed: () {
+                        if (isValid) {
+                          context.read<PageBloc>().add(GoToSelectSeatScreen(
+                              ticket: Ticket(
+                                  movieDetail: widget.movieDetail,
+                                  theater: selectedTheater!,
+                                  time: DateTime(
+                                      selectedDate!.year,
+                                      selectedDate!.month,
+                                      selectedDate!.day,
+                                      selectedTime!),
+                                  bookingCode: randomNumeric(12).toUpperCase(),
+                                  seats: [],
+                                  name: (userState as UserLoaded).user.name,
+                                  totalPrice: 0)));
+                        }
+                      },
+                      backgroundColor: mainColor,
+                      child: Icon(Icons.arrow_forward,
+                          color: isValid ? Colors.white : Color(0xFFBEBEBE)),
+                    );
+                  },
                 ),
               )
             ],

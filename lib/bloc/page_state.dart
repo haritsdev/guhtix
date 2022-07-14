@@ -68,3 +68,31 @@ class OnSelectScheduleScreen extends PageState {
   @override
   List<Object> get props => [movieDetail];
 }
+
+class OnSelectSeatScreen extends PageState {
+  final Ticket ticket;
+
+  OnSelectSeatScreen({required this.ticket});
+
+  @override
+  List<Object> get props => [ticket];
+}
+
+class OnCheckoutScreen extends PageState {
+  final Ticket ticket;
+
+  OnCheckoutScreen({required this.ticket});
+
+  @override
+  List<Object> get props => [ticket];
+}
+
+class OnSuccessScreen extends PageState {
+  final Ticket ticket;
+  final FlutixTransaction transaction;
+
+  OnSuccessScreen({required this.ticket, required this.transaction});
+
+  @override
+  List<Object> get props => [ticket, transaction];
+}

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:guhtix/bloc/blocs.dart';
 import 'package:guhtix/model/models.dart';
 
 part 'page_event.dart';
@@ -33,6 +34,13 @@ class PageBloc extends Bloc<PageEvent, PageState> {
       yield OnMovieDetailPage(event.movie);
     } else if (event is GoToSelectScheduleScreen) {
       yield OnSelectScheduleScreen(movieDetail: event.movieDetail);
+    } else if (event is GoToSelectSeatScreen) {
+      yield OnSelectSeatScreen(ticket: event.ticket);
+    } else if (event is GoToCheckoutScreen) {
+      yield OnCheckoutScreen(ticket: event.ticket);
+    } else if (event is GoToSuccessScreen) {
+      yield OnSuccessScreen(
+          ticket: event.ticket, transaction: event.transaction);
     }
   }
 }

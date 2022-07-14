@@ -21,6 +21,8 @@ import 'package:intl/intl.dart';
 // import 'package:another_flushbar/flushbar_route.dart';
 
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:random_string/random_string.dart';
+import 'package:guhtix/extensions/extensions.dart';
 
 part 'splash_screen.dart';
 part 'main_screen.dart';
@@ -32,3 +34,6 @@ part 'account_confirmation_screen.dart';
 part 'preference_screens.dart';
 part 'movie_detail_screens.dart';
 part 'select_schedule_screens.dart';
+part 'select_seats_screen.dart';
+part 'checkout_screen.dart';
+part 'success_page.dart';
